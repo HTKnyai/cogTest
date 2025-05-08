@@ -1,0 +1,19 @@
+
+<h1>学びスタイル診断</h1>
+
+<%= form_with url: submit_questions_path, method: :post, local: true do %>
+  <% @questions.each do |question| %>
+    <div style="margin-bottom: 20px;">
+      <p><strong><%= question.content %></strong></p>
+
+      <% question.choices.each do |choice| %>
+        <div>
+          <%= radio_button_tag "answers[#{question.id}]", choice.id, false, required: true %>
+          <%= label_tag "answers_#{question.id}_#{choice.id}", choice.content %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= submit_tag "診断する", class: "btn btn-primary" %>
+<% end %>
