@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
   <head>
     <title><%= content_for(:title) || "Cog Test" %></title>
@@ -18,11 +19,19 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-light">
+    <nav class="navbar navbar-dark bg-primary mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="/">学びスタイル診断</a>
+      </div>
+    </nav>
+
+    <main class="container">
+      <%= yield %>
+    </main>
   </body>
 </html>
